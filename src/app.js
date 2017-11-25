@@ -13,15 +13,6 @@ import moment from 'moment'
 
 
 const store = configureStore()
-store.dispatch(addExpenses({description:'water bill', amount: 100, createdAt: 120}))
-store.dispatch(addExpenses({description:'gas bill', amount: 500}))
-store.dispatch(addExpenses({description:'rent', amount: 1095, createdAt: moment().valueOf()}))
-// store.dispatch(SortByAmount())
-
-const state = store.getState()
-const visibleExp = getVisibleExpenses(state.expenses, state.filters)
-console.log(state);
-
 
 const jsx = (
   <Provider store={store}>
