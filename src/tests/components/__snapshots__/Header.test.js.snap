@@ -20,12 +20,5 @@ exports[`should render Header 1`] = `
   >
     Create 
   </NavLink>
-  <NavLink
-    activeClassName="is-action"
-    ariaCurrent="true"
-    to="/help"
-  >
-    Help
-  </NavLink>
 </header>
 `;
