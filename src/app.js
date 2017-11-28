@@ -11,6 +11,7 @@ import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css'
 import moment from 'moment'
 
+import './firebase/firebase'
 
 const store = configureStore()
 
