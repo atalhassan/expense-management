@@ -29,50 +29,61 @@ export class ExpenseListFilter extends React.Component {
   }
   render() {
     return (
-      <div>
-        <input
-          type='text'
-          value={this.props.filters.text}
-          onChange={this.onTextChange}
-        />
+      <div className='content-container'>
+        <div className='input_group'>
+          <div className='input_group__item'>
+            <input
+              type='text'
+              className='text-input'
+              value={this.props.filters.text}
+              placeholder='Search expenses'
+              onChange={this.onTextChange}
+            />
 
-        <select
-          value={this.props.filters.sortBy}
-          onChange={this.onSortChange}
-          >
-          <option value='date'>Date</option>
-          <option value='amount'>Amount</option>
-        </select>
-        <DateRangePicker
-          startDate={this.props.filters.startDate}
-          endDate={this.props.filters.endDate}
-          onDatesChange={this.onDatesChange}
-          focusedInput={this.state.calendarFocused}
-          onFocusChange={this.onFocusChange}
-          showClearDates={true}
-          numberOfMonths={1}
-          isOutsideRange={() => false}
-        />
-      </div>
-    )
+          </div>
+          <div className='input_group__item'>
+            <select
+              className='select'
+              value={this.props.filters.sortBy}
+              onChange={this.onSortChange}
+              >
+                <option value='date'>Date</option>
+                <option value='amount'>Amount</option>
+              </select>
+            </div>
+            <div className='input_group__item'>
+              <DateRangePicker
+                startDate={this.props.filters.startDate}
+                endDate={this.props.filters.endDate}
+                onDatesChange={this.onDatesChange}
+                focusedInput={this.state.calendarFocused}
+                onFocusChange={this.onFocusChange}
+                showClearDates={true}
+                numberOfMonths={1}
+                isOutsideRange={() => false}
+              />
+            </div>
+          </div>
+        </div>
+      )
+    }
   }
-}
 
 
-const mapStateToProps = (state) => {
-  return {
-    filters: state.filters
+  const mapStateToProps = (state) => {
+    return {
+      filters: state.filters
+    }
   }
-}
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setTextFilter : (text) => dispatch(setTextFilter(text)),
-    SortByDate : () => dispatch(SortByDate()),
-    SortByAmount: () => dispatch(SortByAmount()),
-    setStartDate: (startDate) => dispatch(SetStartDate(startDate)),
-    setEndDate: (endDate) => dispatch(SetEndDate(endDate))
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      setTextFilter : (text) => dispatch(setTextFilter(text)),
+      SortByDate : () => dispatch(SortByDate()),
+      SortByAmount: () => dispatch(SortByAmount()),
+      setStartDate: (startDate) => dispatch(SetStartDate(startDate)),
+      setEndDate: (endDate) => dispatch(SetEndDate(endDate))
+    }
   }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExpenseListFilter);
+  export default connect(mapStateToProps, mapDispatchToProps)(ExpenseListFilter);
